@@ -71,8 +71,10 @@ def Register():
         User = UserEntry.get()
         Pass = PassEntry.get()
         DataBaser.cursor.execute("""
-         INSERT INTO Users(Name, Email, User, Password)                        """)
-
+         INSERT INTO Users(Name, Email, User, Password) VALUES (?, ?, ?, ?)""", (Name, Email, User, Pass))
+        DataBaser.conn.commit()
+        messagebox.showinfo(title="Register Info", message="Conta criada")
+ 
     Registrar = ttk.Button(Rightframe, text="Registrar", width=20, command=RegisterToDataBase)
     Registrar.place(x=150, y=230)
 
